@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Doc viewer test</title>
+    <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet"/>
+
+    <style>
+        #p2f-display-toolbox {
+            display: none;
+            position: absolute;
+        }
+
+        #p2f-display:hover #p2f-display-toolbox {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="p2f-display">
+    <div id="p2f-display-toolbox">
+        <img src="img/resize-width.svg" title="Fit to Width" alt="Fit to Width"
+             aria-label="Fit the document to width of the display" onclick="p2f.fitWidth()">
+        <img src="img/resize-height.svg" title="Fit to Page" alt="Fit to Page"
+             aria-label="Fit to whole page to the display" onclick="p2f.fitPage()">
+        <img src="img/zoom-in.svg" title="Zoom In" alt="Zoom In" aria-label="Zoom in by 10 percent"
+             onclick="p2f.zoomIn(10)">
+        <img src="img/zoom-out.svg" title="Zoom Out" alt="Zoom Out" aria-label="Zoom out by 10 percent"
+             onclick="p2f.zoomOut(10)">
+        <img src="img/rotate.svg" title="Rotate" alt="Rotate" aria-label="Rotate the page 90 degrees clockwise"
+             onclick="p2f.rotate()">
+        <img src="img/fullscreen.svg" title="Full Screen" alt="Full Screen" aria-label="View the document in full-screen mode"
+             onclick="p2f.fullscreen()">
+    </div>
+    <iframe src="docviewer.html#doc.xml" allowfullscreen webkitAllowFullScreen='yes' width="99%" height="800"
+            id="doc1"></iframe>
+</div>
+
+<script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/should.js/11.2.1/should.min.js"></script>
+<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+
+
+<script>mocha.setup('bdd')</script>
+<script src="test.js"></script>
+<script>
+    document.onLoaded = function () {
+        mocha.run();
+    };
+</script>
+
+<div id="mocha"></div>
+
+
+</body>
+</html>
